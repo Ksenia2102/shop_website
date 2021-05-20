@@ -1,0 +1,24 @@
+<ul class="menu">
+    <li><a href="{% url 'main' %}" {% if request.resolver_match.url_name == 'main' %}class="active" {% endif %}>домой</a></li>
+    <li><a href="{% url 'products:index' %}"  {% if request.resolver_match.namespace == 'products' %}class="active" {% endif %}>продукты</a></li>
+    <li><a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %}class="active" {% endif %}>контакты</a></li>
+
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'auth:edit' %}">Редактировать пользователя</a></li>
+        {% if user.first_name %}
+            {{ user.first_name }}
+        {% else %}
+            Пользователь
+        {% endif %}
+
+    <li><a href="{% url 'auth:logout' %}">Выход</a></li>
+    {% else %}
+    <li><a href="{% url 'auth:login' %}">Вход</a></li>
+    {% endif %}
+</ul>
+
+    <li><a href="{% url 'basket:basket' %}" class="basket {% if request.resolver_match.url_name == 'basket' %}active{% endif %}">Корзина
+        {% if basket %}
+        {{ basket }}
+        {% endif %}
+    </a></li>
