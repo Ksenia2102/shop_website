@@ -8,7 +8,7 @@ import mainapp.views as mainapp
 app_name = 'mainapp'
 
 urlpatterns = [
-    path('<pk>/', mainapp.products, name='category'),
     path('', mainapp.products, name='index'),
+    path('<pk>/', mainapp.products, name='category'),
 
 ]

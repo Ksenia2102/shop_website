@@ -4,9 +4,9 @@
     <li><a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %}class="active" {% endif %}>контакты</a></li>
 
     {% if user.is_authenticated %}
-    <li><a href="{% url 'auth:edit' %}">Редактировать пользователя</a></li>
-        {% if user.first_name %}
-            {{ user.first_name }}
+<!--    <li><a href="{% url 'auth:edit' %}">Редактировать пользователя</a></li>-->
+        {% if user.username %}
+            {{ user.username }}
         {% else %}
             Пользователь
         {% endif %}
@@ -19,6 +19,6 @@
 
     <li><a href="{% url 'basket:basket' %}" class="basket {% if request.resolver_match.url_name == 'basket' %}active{% endif %}">Корзина
         {% if basket %}
-        {{ basket }}
+        {{ basket|length }}
         {% endif %}
     </a></li>

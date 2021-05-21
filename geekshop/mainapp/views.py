@@ -32,7 +32,7 @@ def products(request, pk=None):
             'links_menu': links_menu,
             'title': title,
             'products': products,
-            'categoty': category,
+            'category': category,
             'basket': basket
         }
         return render(request, 'mainapp/products_list.html', content)
